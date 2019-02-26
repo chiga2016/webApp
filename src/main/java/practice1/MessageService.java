@@ -15,10 +15,12 @@ public class MessageService {
         addMessage("guest2", "Hello!");
     }
 
-    public final void addMessage(String from, String text) {
+    public final void addMessage(String from,String user2, String text ) {
+        messages.add(new Message(from, user2, text));
+    }
+    public final void addMessage(String from, String text ) {
         messages.add(new Message(from, text));
     }
-    
     public List<Message> getAllMessages() {
         return Collections.unmodifiableList(messages);
         // вызвавшие не смогут удалить или добавить сообщения

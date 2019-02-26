@@ -15,9 +15,11 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <form action="/add.do" method="GET">
+        <form action="/add.do" method="POST">
         Ваше имя:<br/>
         <input name="user"/><br/>
+        Кому:<br/>
+            <input name="user2"/><br/>
         Ваше сообщение:<br/>
         <textarea cols="50" rows="3"  name="msg"></textarea><br/>
         <input type="submit" title="Опубликовать"/>
