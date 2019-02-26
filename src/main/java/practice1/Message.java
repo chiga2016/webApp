@@ -16,9 +16,12 @@ public class Message {
         this.text = text;
         this.date = new Date(System.currentTimeMillis());
     }
-    
+
     public Message(String user1, String text) {
-        this(user1, null,  text);
+        this.author = user1;
+        this.text = text;
+        this.recepient = "Всем";
+        this.date = new Date(System.currentTimeMillis());
     }
     
     public Date getDate() {
@@ -39,7 +42,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return date.toString()+": From "+author+" to "+recepient+": ---"+text+"---";
+        return "<font color = green>" +date.toString()+"</font>: From <font color = blue>"+author+"</font> to <font color = purple>"+recepient+"</font>: ---"+text+"---";
     }
 
     
