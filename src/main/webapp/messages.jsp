@@ -17,6 +17,8 @@
 <h1> Мы на JSTL </h1>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<jsp:include page="addMessage.jsp" />
+
 <ul>
     <c:forEach var="m" items="${messages}" >
         <li><font color = green><c:out value="${m.date}"></c:out></font> : From  <font color = blue><c:out value="${m.author}"></c:out> </font> To <font color = purple><c:out value="${m.recepient}"></c:out></font> : <font color = #4b0082  size="3" face="Arial" ><c:out value="${m.text}"></c:out></font>   </li>
@@ -25,6 +27,6 @@
 
 
 
-<jsp:include page="addMessage.jsp" />
+
 </body>
 </html>

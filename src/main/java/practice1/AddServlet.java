@@ -52,7 +52,6 @@ public class AddServlet extends HttpServlet {
        // req.getRequestDispatcher("oldstylejsp.jsp").forward(req, resp);
 
         req.setAttribute("messages",messages);
-
         req.getRequestDispatcher("messages.jsp").forward(req, resp);
 
 //        String path = "/oldstylejsp.jsp";

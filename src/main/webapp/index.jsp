@@ -1,4 +1,5 @@
-<%-- 
+<%--suppress XmlPathReference --%>
+<%--
     Document   : index
     Created on : 06.12.2010, 23:24:53
     Author     : Alexei
@@ -14,7 +15,18 @@
         <title>Чат</title>
     </head>
     <body>
+    <div style="
+    margin: 0;padding: 0;
+    margin-left: 40%;
+     margin-right: 30%;
+	 font-size: medium;
+	 margin-top: 10%;"
+    >
         <h1>Добро пожаловать !!!!!</h1>
-        <a href="addMessage.jsp"> Начать чат </a>
+        <jsp:include page="login.jsp" />
+
+        <a href="addMessage.jsp"><font size="+3" color="#008b8b"> Начать чат </font> </a>
+    </div>>
+
         </body>
 </html>
