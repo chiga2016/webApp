@@ -14,7 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h3>Добавить сообщение</h3>
         <form action="/add.do" method="POST" accept-charset="UTF-8">
         Ваше имя:<br/>
         <input name="user"/><br/>

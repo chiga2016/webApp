@@ -13,16 +13,18 @@
     <title>Title</title>
 </head>
 <body>
+
+<h1> Мы на JSTL </h1>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    MessageService svc = (MessageService) application.getAttribute("msgSvc");
-    List<Message> messages =  svc.getAllMessages();
-%>
+
 <ul>
     <c:forEach var="m" items="${messages}" >
-        <li>${m}</li>
+        <li><font color = green><c:out value="${m.date}"></c:out></font> : From  <font color = blue><c:out value="${m.author}"></c:out> </font> To <font color = purple><c:out value="${m.recepient}"></c:out></font> : <font color = #4b0082  size="3" face="Arial" ><c:out value="${m.text}"></c:out></font>   </li>
     </c:forEach>
 </ul>
 
+
+
+<jsp:include page="addMessage.jsp" />
 </body>
 </html>
