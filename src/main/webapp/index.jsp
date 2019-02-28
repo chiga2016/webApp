@@ -4,7 +4,7 @@
     Created on : 06.12.2010, 23:24:53
     Author     : Alexei
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,13 +22,23 @@
 	 font-size: medium;
 	 margin-top: 10%;" >
         <%
-        String login = (String) request.getSession().getAttribute("username");
+        //String login = (String) request.getSession().getAttribute("username");
         %>
 
-        <h1>Добро пожаловать !!!!!${login}</h1>
-        <jsp:include page="login.jsp" />
+        <h1>Добро пожаловать <c:if test="${username!=null}"> <font color="#4b0082">${username}   </font> <a href="logout.jsp">(выйти)</a> </c:if> !!!!!</h1>
 
-        <a href="addMessage.jsp"><font size="+3" color="#008b8b"> Начать чат </font> </a>
+        <jsp:include page="login.jsp" />
+        <br/> <br/>
+        <c:if test="${username==null}">
+        <a href="addMessage.jsp"><font size="+3" color="#008b8b"> Начать чат анонимно </font> </a>
+        </c:if>
+
+
+
+
+        
+        
+        
     </div>>
 
         </body>

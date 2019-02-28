@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<h1> Мы на JSTL </h1>
+<!-- <h1> Мы на JSTL </h1> -->
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="addMessage.jsp" />

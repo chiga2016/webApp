@@ -4,6 +4,7 @@ package practice1;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MessageService {
     private final ArrayList<Message> messages;
@@ -28,10 +29,11 @@ public class MessageService {
         // но наши сообщения неизменямы (Immutable)
     }
     
-    //public List<Message> getGlobalMessages() {
+    public List<Message> getGlobalMessages() {
       // выбрать тех, у кого адресат=null
-      //  return messages.stream().filter(???).collect(Collectors.toList());
-    //}
+        //return messages.stream().filter(???).collect(Collectors.toList());
+        return null;
+    }
     
     
     //public List<Message> getMessagesTo(String user) {

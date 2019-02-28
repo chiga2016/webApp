@@ -25,8 +25,8 @@ public class LoginServlet extends HttpServlet {
                 req.getSession().setAttribute("username", login);
                 req.getRequestDispatcher("newMessage.jsp").forward(req, resp);
             } else {
-            resp.getWriter().println("Access denied");
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
+            //resp.getWriter().println("Access denied");
+            req.getRequestDispatcher("errorLogin.jsp").forward(req, resp);
         }
 
 

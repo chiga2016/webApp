@@ -12,7 +12,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/add.do")
+@WebServlet(urlPatterns = {"/add.do","/view.do","/viewPrivate.do"})
+
 public class AddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,7 +31,7 @@ public class AddServlet extends HttpServlet {
         String user2 = req.getParameter("user2");
         String msg = req.getParameter("msg");
 
-
+        String path = req.getServletPath();
 
         MessageService svc = (MessageService) getServletContext().getAttribute("msgSvc");
 
@@ -52,15 +53,13 @@ public class AddServlet extends HttpServlet {
        // req.getRequestDispatcher("oldstylejsp.jsp").forward(req, resp);
 
         req.setAttribute("messages",messages);
-        req.getRequestDispatcher("messages.jsp").forward(req, resp);
+        //req.getRequestDispatcher("messages.jsp").forward(req, resp);
 
 //        String path = "/oldstylejsp.jsp";
 //        ServletContext servletContext = getServletContext();
 //        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
 //        requestDispatcher.forward(req, resp);
-
-
-        PrintWriter writer = resp.getWriter();
+         PrintWriter writer = resp.getWriter();
 
 
 
@@ -71,7 +70,8 @@ public class AddServlet extends HttpServlet {
 //            writer.println("</head>");
             writer.println("<body>");
             writer.println("<body>");
-                writer.println("<h2>Лог сообщений</h2>");
+            writer.println("<h2>Лог сообщений</h2>");
+            writer.println(path);
             writer.println("<UI>");
             for (Message mess : messages  ) {
                 writer.println("<li>"+mess+"</li>");
