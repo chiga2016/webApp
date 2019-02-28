@@ -20,9 +20,12 @@
     margin-left: 40%;
      margin-right: 30%;
 	 font-size: medium;
-	 margin-top: 10%;"
-    >
-        <h1>Добро пожаловать !!!!!</h1>
+	 margin-top: 10%;" >
+        <%
+        String login = (String) request.getSession().getAttribute("username");
+        %>
+
+        <h1>Добро пожаловать !!!!!${login}</h1>
         <jsp:include page="login.jsp" />
 
         <a href="addMessage.jsp"><font size="+3" color="#008b8b"> Начать чат </font> </a>
