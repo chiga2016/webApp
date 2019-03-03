@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>messages</title>
 </head>
 <body>
 
@@ -21,7 +21,7 @@
 
 <ul>
     <c:forEach var="m" items="${messages}" >
-        <li><font color = green><c:out value="${m.date}"></c:out></font> : From  <font color = blue><c:out value="${m.author}"></c:out> </font> To <font color = purple><c:out value="${m.recepient}"></c:out></font> : <font color = #4b0082  size="3" face="Arial" ><c:out value="${m.text}"></c:out></font>   </li>
+        <li><font color = green><c:out value="${m.date}"></c:out></font> : From  <a href="add.do?author=${m.author}"><font color = blue><c:out value="${m.author}"></c:out> </font></a> To <font color = purple><c:out value="${m.recepient}"></c:out></font> : <font color = #4b0082  size="3" face="Arial" ><c:out value="${m.text}"></c:out></font>   </li>
     </c:forEach>
 </ul>
 

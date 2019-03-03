@@ -22,6 +22,7 @@ public class MessageService {
     public final void addMessage(String from, String text ) {
         messages.add(new Message(from, text));
     }
+
     public List<Message> getAllMessages() {
         return Collections.unmodifiableList(messages);
         // вызвавшие не смогут удалить или добавить сообщения
@@ -31,12 +32,13 @@ public class MessageService {
     
     public List<Message> getGlobalMessages() {
       // выбрать тех, у кого адресат=null
-        //return messages.stream().filter(???).collect(Collectors.toList());
-        return null;
+        List<Message> lst = messages.stream().filter(p -> p.getRecepient().equals("Всем")).collect(Collectors.toList());
+        return lst;
     }
     
     
-    //public List<Message> getMessagesTo(String user) {
-         //return messages.stream().filter(???).collect(Collectors.toList());
-    //}
+    public List<Message> getMessagesTo(String user) {
+        List<Message> lst = messages.stream().filter(p -> p.getRecepient().equals(user)).collect(Collectors.toList());
+         return lst;
+    }
 }

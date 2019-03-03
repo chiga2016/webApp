@@ -24,14 +24,16 @@
         <%
         //String login = (String) request.getSession().getAttribute("username");
         %>
-
-        <h1>Добро пожаловать <c:if test="${username!=null}"> <font color="#4b0082">${username}   </font> <a href="logout.jsp">(выйти)</a> </c:if> !!!!!</h1>
+        <p>CounterSessionTxt =  ${CounterSessionTxt}</p>
+        <p>globalCounter  =  ${globalCounter}</p>
+        <h2>Добро пожаловать <c:if test="${username!=null}"> <font color="#4b0082">${username}   </font> <a href="logout.jsp">(выйти)</a> </c:if> !!!!!</h2>
 
         <jsp:include page="login.jsp" />
         <br/> <br/>
         <c:if test="${username==null}">
         <a href="addMessage.jsp"><font size="+3" color="#008b8b"> Начать чат анонимно </font> </a>
         </c:if>
+
 
 
 

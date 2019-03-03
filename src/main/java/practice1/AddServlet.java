@@ -17,7 +17,14 @@ import java.util.List;
 public class AddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println("OK");
+        //resp.getWriter().println("OK");
+        resp.setContentType("text/html; charset=UTF-8");
+        //resp.setCharacterEncoding ("utf-8");
+        req.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html; charset=utf-8");
+        resp.setCharacterEncoding("utf-8");
+        req.getParameter("author");
+        req.getRequestDispatcher("newMessage.jsp").forward(req, resp);
 
     }
 
@@ -30,61 +37,76 @@ public class AddServlet extends HttpServlet {
         String user = req.getParameter("user");
         String user2 = req.getParameter("user2");
         String msg = req.getParameter("msg");
-
         String path = req.getServletPath();
 
         MessageService svc = (MessageService) getServletContext().getAttribute("msgSvc");
-
-        if (user!=null&msg!=null){
+        if (user!=""&&msg!=""&&user!=null&&msg!=null){
             if(user2!=""){
                 svc.addMessage(user,user2,msg);
             }
             else{
                 svc.addMessage(user,msg);
             }
-
         }
-
-        List<Message> messages =  svc.getAllMessages();
 
         resp.setContentType("text/html; charset=utf-8");
         resp.setCharacterEncoding("utf-8");
+        PrintWriter writer = resp.getWriter();
+        List<Message> messages;
+        // req.getRequestDispatcher("oldstylejsp.jsp").forward(req, resp);
 
-       // req.getRequestDispatcher("oldstylejsp.jsp").forward(req, resp);
+        switch(path){
+            case("/add.do"):
+                messages =  svc.getAllMessages();
+                req.setAttribute("messages",messages);
+                req.getRequestDispatcher("messages.jsp").forward(req, resp);
+            break;
+            case("/view.do"):
+                 messages =  svc.getGlobalMessages();
+                req.getSession().setAttribute("showMessage", "all");
+                writer.println("Надо показать сообщения без адресата");
+                req.setAttribute("messages",messages);
+                req.getRequestDispatcher("messages.jsp").forward(req, resp);
+            break;
+            case("/viewPrivate.do"):
+                 messages =  svc.getMessagesTo((String) req.getSession().getAttribute("username"));
+                req.getSession().setAttribute("showMessage", "private");
+                writer.println("Надо показать личные сообщения");
+                req.setAttribute("messages",messages);
+                req.getRequestDispatcher("messages.jsp").forward(req, resp);
+            break;
 
-        req.setAttribute("messages",messages);
-        //req.getRequestDispatcher("messages.jsp").forward(req, resp);
 
+        }
+
+        writer.close();
 //        String path = "/oldstylejsp.jsp";
 //        ServletContext servletContext = getServletContext();
 //        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
 //        requestDispatcher.forward(req, resp);
-         PrintWriter writer = resp.getWriter();
-
-
-
-        try {
-            writer.println("<html>");
-//            writer.println("<head>");
-//            writer.println("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
-//            writer.println("</head>");
-            writer.println("<body>");
-            writer.println("<body>");
-            writer.println("<h2>Лог сообщений</h2>");
-            writer.println(path);
-            writer.println("<UI>");
-            for (Message mess : messages  ) {
-                writer.println("<li>"+mess+"</li>");
-            }
-            writer.println("</UI>");
-            writer.println("</body>");
-            writer.println("</html>");
-
-
-            // http://localhost:8090/hello?id=5&catName=%D0%91%D0%BE%D1%80%D0%B8%D1%81&nums=1&nums=2&nums=3
-        } finally {
-            writer.close();
-        }
+         //PrintWriter writer = resp.getWriter();
+//        try {
+//            writer.println("<html>");
+////            writer.println("<head>");
+////            writer.println("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
+////            writer.println("</head>");
+//            writer.println("<body>");
+//            writer.println("<body>");
+//            writer.println("<h2>Лог сообщений</h2>");
+//            writer.println(path);
+//            writer.println("<UI>");
+//            for (Message mess : messages  ) {
+//                writer.println("<li>"+mess+"</li>");
+//            }
+//            writer.println("</UI>");
+//            writer.println("</body>");
+//            writer.println("</html>");
+//
+//
+//            // http://localhost:8090/hello?id=5&catName=%D0%91%D0%BE%D1%80%D0%B8%D1%81&nums=1&nums=2&nums=3
+//        } finally {
+//            writer.close();
+//        }
 
 
 

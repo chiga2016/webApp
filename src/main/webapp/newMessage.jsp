@@ -22,20 +22,32 @@
 
     <h1>Добро пожаловать  <font color="#4b0082">${username}</font> !!!!!</h1>
 
-    <h3>Пользователь <c:if test="${username!=null}"> <font color="#4b0082">${username}</font> <a href="logout.jsp">(выйти)</a> </c:if>  <c:if test="${username==null}"> <font color="#4b0082">Аноним</font> <a href="index.jsp">(войти)</a> </c:if> !!!!!</h3>
+    <div style="margin-right: 10px"><h2>Пользователь <c:if test="${username!=null}"> <font
+            color="#4b0082">${username}</font> <a href="logout.jsp">(выйти)</a></c:if> <c:if test="${username==null}">
+        <font color="#4b0082">Аноним</font> <a href="index.jsp">(войти)</a> </c:if> !!!!!</h2></div>
+    <br>
+    <form action="/view.do" method="post" style="float:left; margin-right: 10px">
+        <input type="submit" title="Показать сообщения" name="viewMessages" value="Показать сообщения"></input>
+    </form>
+
+    <form action="/viewPrivate.do" method="post" style="float:left; margin-right: 10px">
+        <input type="submit" title="Показать личные сообщения" name="viewPrivateMessages" value="Показать личные сообщения"></input>
+    </form>
+    <br>
 
         <h3>Добавить сообщение</h3>
+
         <form action="/add.do" method="POST" accept-charset="UTF-8">
         Ваше имя:<br/>
         <input name="user" <c:if test="${username!=null}"> value=${username}</c:if>  /><br/>
         Кому:<br/>
-        <input name="user2"/><br/>
+        <input name="user2" <c:if test="${param.author!=null}"> value=${param.author}</c:if> /><br/>
         Ваше сообщение:<br/>
         <textarea cols="50" rows="3"  name="msg"></textarea><br/>
         <input type="submit" title="Опубликовать"/>
-    </form>
+        </form>
+    <br>
 
-       
 
 
 </body>
