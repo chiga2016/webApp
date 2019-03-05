@@ -29,7 +29,9 @@
         <input type="submit" title="Показать личные сообщения" name="viewPrivateMessages" value="Показать личные сообщения"></input>
     </form>
     <br>
-        <h3>Добавить сообщение</h3>
+    <br>
+        <h3 align="left">Добавить сообщение</h3>
+
         <form action="/add.do" method="POST" accept-charset="UTF-8">
         Ваше имя:<br/>
         <input name="user"  <c:if test="${username!=null}"> value=${username}</c:if> /><br/>

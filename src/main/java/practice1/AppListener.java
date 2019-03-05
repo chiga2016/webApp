@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 //...
 public void contextInitialized (ServletContextEvent sce){
     sce.getServletContext().setAttribute("msgSvc", new MessageService());
+
 }
 
 

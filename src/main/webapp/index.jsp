@@ -24,7 +24,8 @@
         <%
         //String login = (String) request.getSession().getAttribute("username");
         %>
-        <p>CounterSessionTxt =  ${CounterSessionTxt}</p>
+        <p> SessionID ${sessionID}</p>
+        <p>CounterSessionTxt =  ${CounterSession}</p>
         <p>globalCounter  =  ${globalCounter}</p>
         <h2>Добро пожаловать <c:if test="${username!=null}"> <font color="#4b0082">${username}   </font> <a href="logout.jsp">(выйти)</a> </c:if> !!!!!</h2>
 

@@ -40,6 +40,9 @@ public class AddServlet extends HttpServlet {
         String path = req.getServletPath();
 
         MessageService svc = (MessageService) getServletContext().getAttribute("msgSvc");
+
+
+
         if (user!=""&&msg!=""&&user!=null&&msg!=null){
             if(user2!=""){
                 svc.addMessage(user,user2,msg);
@@ -64,19 +67,17 @@ public class AddServlet extends HttpServlet {
             case("/view.do"):
                  messages =  svc.getGlobalMessages();
                 req.getSession().setAttribute("showMessage", "all");
-                writer.println("Надо показать сообщения без адресата");
+                //writer.println("Надо показать сообщения без адресата");
                 req.setAttribute("messages",messages);
                 req.getRequestDispatcher("messages.jsp").forward(req, resp);
             break;
             case("/viewPrivate.do"):
                  messages =  svc.getMessagesTo((String) req.getSession().getAttribute("username"));
                 req.getSession().setAttribute("showMessage", "private");
-                writer.println("Надо показать личные сообщения");
+                //writer.println("Надо показать личные сообщения");
                 req.setAttribute("messages",messages);
                 req.getRequestDispatcher("messages.jsp").forward(req, resp);
             break;
-
-
         }
 
         writer.close();
