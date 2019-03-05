@@ -42,8 +42,5 @@
         <input type="submit" title="Опубликовать"/>
     </form>
 
-       
-
-
 	   </body>
 </html>

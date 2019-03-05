@@ -18,12 +18,13 @@ public class AddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //resp.getWriter().println("OK");
-        resp.setContentType("text/html; charset=UTF-8");
+        //resp.setContentType("text/html; charset=UTF-8");
         //resp.setCharacterEncoding ("utf-8");
         req.setCharacterEncoding("utf-8");
         resp.setContentType("text/html; charset=utf-8");
         resp.setCharacterEncoding("utf-8");
-        req.getParameter("author");
+        //req.getParameter("author");
+
         req.getRequestDispatcher("newMessage.jsp").forward(req, resp);
 
     }
@@ -33,6 +34,8 @@ public class AddServlet extends HttpServlet {
         resp.setContentType("text/html; charset=UTF-8");
         //resp.setCharacterEncoding ("utf-8");
         req.setCharacterEncoding("utf-8");
+        //resp.setContentType("text/html; charset=utf-8");
+        resp.setCharacterEncoding("utf-8");
         //resp.setHeader("Content-Type", "text/html; charset=UTF-8");
         String user = req.getParameter("user");
         String user2 = req.getParameter("user2");
@@ -52,8 +55,7 @@ public class AddServlet extends HttpServlet {
             }
         }
 
-        resp.setContentType("text/html; charset=utf-8");
-        resp.setCharacterEncoding("utf-8");
+
         PrintWriter writer = resp.getWriter();
         List<Message> messages;
         // req.getRequestDispatcher("oldstylejsp.jsp").forward(req, resp);

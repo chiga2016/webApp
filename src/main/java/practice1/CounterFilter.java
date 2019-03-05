@@ -25,8 +25,8 @@ public class CounterFilter implements Filter {
 
 	private FilterConfig filterConfig = null;
 	Map<String, AtomicInteger> counters = new TreeMap<>();
-	AtomicInteger counter1; // = new AtomicInteger(0);
-	AtomicInteger counter2; // = new AtomicInteger(0);
+	//AtomicInteger counter1; // = new AtomicInteger(0);
+	final AtomicInteger counter2 = new AtomicInteger(0);
 	String sessionID;
 
 	//int counter1;
@@ -35,7 +35,7 @@ public class CounterFilter implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 		this.filterConfig = fConfig;
 
-		counter2 = new AtomicInteger(0);
+		//counter2 = new AtomicInteger(0);
 		fConfig.getServletContext().setAttribute("globalCounter", counter2);
 		//counter1 =0;
 		//this.context = fConfig.getServletContext();
@@ -67,14 +67,14 @@ public class CounterFilter implements Filter {
 
 
 
-
-		if (filterConfig.getServletContext().getAttribute("globalCounter")!=null){
-			counter2.getAndIncrement();
-			filterConfig.getServletContext().setAttribute("globalCounter", counter2);
-		}
-		else {
-
-		}
+        counter2.getAndIncrement();
+//		if (filterConfig.getServletContext().getAttribute("globalCounter")!=null){
+//
+//			filterConfig.getServletContext().setAttribute("globalCounter", counter2);
+//		}
+//		else {
+//
+//		}
 
 
 
